@@ -1,5 +1,7 @@
 # Django settings for skotsj project.
+
 from privatesettings import *
+import os
  
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -51,9 +53,8 @@ MEDIA_URL = ''
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/var/www/example.com/static/"
-import os
+
 STATIC_ROOT = os.path.join(os.path.dirname(__file__), '..', 'staticcompiled').replace('\\','/')+"/"
-print(STATIC_ROOT)
 
 # URL prefix for static files.
 # Example: "http://example.com/static/", "http://static.example.com/"
@@ -93,11 +94,11 @@ MIDDLEWARE_CLASSES = (
 )
 
 ROOT_URLCONF = 'skotsj.urls'
+LOGIN_REDIRECT_URL = '/'
 
 # Python dotted path to the WSGI application used by Django's runserver.
 WSGI_APPLICATION = 'skotsj.wsgi.application'
 
-import os
 TEMPLATE_DIRS = (os.path.join(os.path.dirname(__file__), '..', 'templates').replace('\\','/'),)
 
 INSTALLED_APPS = (

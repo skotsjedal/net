@@ -1,5 +1,7 @@
 from django.views import generic
 from blogg.models import *
+from django.core.urlresolvers import reverse
+
 
 class IndexView(generic.ListView):
     template_name = 'blogg/index.html'
@@ -13,3 +15,18 @@ class IndexView(generic.ListView):
 class DetailView(generic.DetailView):
     model = Post
     template_name = 'blogg/post.html'
+
+
+class CreateView(generic.CreateView):
+
+    model = Post
+    template_name = 'blogg/create.html'
+
+    def get_success_url(self):
+        return reverse('blogg')
+
+    def get_context_data(self, **kwargs):
+
+        context = super(CreateView, self).get_context_data(**kwargs)
+        context['action'] = reverse('createblogg')
+        return context

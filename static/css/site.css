@@ -1,3 +1,4 @@
+/* Footer and Header layout */
 html, body {
     height: 100%;
 }
@@ -12,6 +13,7 @@ html, body {
     padding: 0px 0 60px;
 }
 
+/* Blog layout */
 #wrap > .container {
   padding: 60px 15px 0;
 }

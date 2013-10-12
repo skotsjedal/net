@@ -4,6 +4,9 @@
 
 
     <h1>Blogg</h1>
+    {% if user.is_authenticated and user.is_admin %}
+        <a href="{% url 'createblogg' %}">Create new entry</a>
+    {% endif %}
 
     {% for post in posts %}
         <div id="{{ post.id }}" class="row">
