@@ -1,0 +1,48 @@
+{% extends '_layout.html' %}
+
+{% block body %}
+
+
+    <h1>Blogg</h1>
+
+    {% for post in posts %}
+        <div id="{{ post.id }}" class="row">
+        <div class="col-md-offset-1 col-md-9 panel panel-default post">
+            <div class="page-header">
+                <h1>{{ post.title }}</h1>
+            </div>
+            <div class="panel-body">{{ post.content }}</div>
+            <div class="panel-footer">
+                <span class="badge badge-success"><i class="icon-calendar"></i> {{ post.time }}</span>
+                <span class="label label-info"><i class="icon-user"></i> {{ post.author.username }}</span>
+                <div class="pull-right">
+                    <button class="btn btn-primary"
+                            data-toggle="collapse" title="Show Comments"
+                            data-target="#comment{{ post.id }}">
+                        <i class="icon-comment"></i> {{ post.comments.all|length }} <i class="icon-angle-down icon-large"></i>
+                    </button>
+                </div>
+            </div>
+            <div id="comment{{ post.id }}" class="collapse comments">
+                {% for comment in post.comments.all %}
+                    <div class="row">
+                        <div class="col-md-offset-6 cold-md-4">
+                            <blockquote>
+                               {{ comment.content }}
+                                <small>
+                                    <i class="icon-user"></i> {{ comment.author }} &nbsp;
+                                    <i class="icon-minus icon-large"></i> &nbsp; {{ comment.time }}
+                                </small>
+                            </blockquote>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+
+        </div>
+        </div>
+    {% endfor %}
+
+
+{% endblock %}
+
