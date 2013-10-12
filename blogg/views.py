@@ -6,7 +6,8 @@ class IndexView(generic.ListView):
     context_object_name = 'posts'
 
     def get_queryset(self):
-        return Post.objects.order_by('-time')[:5]
+        posts = Post.objects.order_by('-time')[:5]
+        return posts
 
 
 class DetailView(generic.DetailView):

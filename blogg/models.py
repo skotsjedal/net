@@ -7,6 +7,11 @@ class Comment(models.Model):
     time = models.DateTimeField()
     author = models.ForeignKey(settings.AUTH_USER_MODEL)
 
+    class Meta:
+        verbose_name = u"Comment"
+        verbose_name_plural = u"Comments"
+        ordering = ['-time', ]
+
 
 class Post(models.Model):
     title = models.CharField(max_length=30)
@@ -16,4 +21,4 @@ class Post(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL)
 
     def __unicode__(self):
-        return self.author.username+"@"+str(self.time)
+        return self.author.username + "@" + str(self.time)
