@@ -1,11 +1,10 @@
 from django.db import models
 from django.conf import settings
-from datetime import datetime
 
 
 class Comment(models.Model):
     content = models.TextField()
-    time = models.DateTimeField(default=datetime.now)
+    time = models.DateTimeField(auto_now_add=True)
     author = models.ForeignKey(settings.AUTH_USER_MODEL)
 
     class Meta:

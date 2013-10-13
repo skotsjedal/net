@@ -24,16 +24,8 @@ class CreateView(generic.CreateView):
     template_name = 'blogg/create.html'
 
     def form_valid(self, form):
-        print "form_valid"
         form.instance.author = self.request.user
-        form.instance.time = datetime.now()
         return super(CreateView, self).form_valid(form)
 
     def get_success_url(self):
         return reverse('blogg')
-
-    #def get_context_data(self, **kwargs):
-    #
-    #    context = super(CreateView, self).get_context_data(**kwargs)
-    #    context['action'] = reverse('createblogg')
-    #    return context
