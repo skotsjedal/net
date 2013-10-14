@@ -1,11 +1,10 @@
 from django.views import generic
-from django.conf import settings
 from user.models import UserProfile
 
 
 class DetailView(generic.DetailView):
     template_name = 'user/detail.html'
-    model = settings.AUTH_USER_MODEL
+    model = UserProfile
 
 
 class IndexView(generic.ListView):
