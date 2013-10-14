@@ -1,12 +1,12 @@
 Skotsjedal 2.0
-===
+=============
 
 ### Purpose
 * Get something new up and running
 * HTML2 is a bit old so lets
-...Get HTML5/CSS3
-...Something that doesn't look like a toilet
-...Something usefull
+    * Get HTML5/CSS3
+    * Something that doesn't look like a toilet
+    * Something usefull
 * Learn Django
 * Mess around and try new stuff
 
@@ -19,9 +19,7 @@ Skotsjedal 2.0
 
 ### Planned Features
 * Info pages
+* Markdown in blogposts?
 * I really don't know
 
----
-
 > Common sense is not so common
-
