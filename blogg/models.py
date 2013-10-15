@@ -6,6 +6,7 @@ class Comment(models.Model):
     content = models.TextField()
     time = models.DateTimeField(auto_now_add=True)
     author = models.ForeignKey(settings.AUTH_USER_MODEL)
+    post = models.ForeignKey('Post')
 
     class Meta:
         verbose_name = u"Comment"
@@ -20,7 +21,7 @@ class Post(models.Model):
     title = models.CharField(max_length=30)
     content = models.TextField()
     time = models.DateTimeField(auto_now_add=True)
-    comments = models.ManyToManyField(Comment, blank=True)
+    #comments = models.ManyToManyField(Comment, blank=True)
     author = models.ForeignKey(settings.AUTH_USER_MODEL)
 
     def __unicode__(self):

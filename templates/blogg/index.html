@@ -22,12 +22,13 @@
                     <button class="btn btn-primary"
                             data-toggle="collapse" title="Show Comments"
                             data-target="#comment{{ post.id }}">
-                        <i class="icon-comment"></i> {{ post.comments.all|length }} <i class="icon-angle-down icon-large"></i>
+                        <i class="icon-comment"></i> {{ post.comment_set.all|length }} <i
+                            class="icon-angle-down icon-large"></i>
                     </button>
                 </div>
             </div>
             <div id="comment{{ post.id }}" class="collapse comments">
-                {% for comment in post.comments.all %}
+                {% for comment in post.comment_set.all %}
                     <div class="row">
                         <div class="col-md-offset-6 cold-md-4">
                             <blockquote>

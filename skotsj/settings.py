@@ -1,6 +1,6 @@
 # Django settings for skotsj project.
 
-from privatesettings import *
+from skotsj.privatesettings import *
 import os
  
 DEBUG = True
