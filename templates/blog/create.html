@@ -3,8 +3,8 @@
 {% block body %}
     <h1>New Blogpost</h1>
 
-    <form action="{% url "createblog" %}" method="POST" class="form-horizontal">
-        {% csrf_token %}
+    <form action="{% url "create-blog" %}" method="POST" class="form-horizontal">
+    {% csrf_token %}
 {#        {{ form.as_ul }}#}
         <div class="form-group">
 
