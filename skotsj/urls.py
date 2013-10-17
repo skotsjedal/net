@@ -1,6 +1,6 @@
 from django.conf.urls import patterns, include, url
 from home import views as home
-from blogg import views as blogg
+from blog import views as blog
 from user import views as user
 from django.contrib import admin
 
@@ -8,8 +8,8 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
                        url(r'^$', home.IndexView.as_view(), name='index'),
-                       url(r'^blogg/$', blogg.IndexView.as_view(), name='blogg'),
-                       url(r'^blogg/new$', blogg.CreateView.as_view(), name='createblogg'),
+                       url(r'^blog/$', blog.IndexView.as_view(), name='blog'),
+                       url(r'^blog/new$', blog.CreateView.as_view(), name='createblog'),
 
                        url(r'^user/$', user.IndexView.as_view(), name='users'),
                        url(r'^login/$', 'django.contrib.auth.views.login', name='login'),

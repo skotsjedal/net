@@ -1,5 +1,5 @@
 from django import forms
-from blogg.models import Post
+from blog.models import Post
 
 
 class NewBlog(forms.ModelForm):

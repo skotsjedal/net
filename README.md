@@ -6,7 +6,7 @@ Skotsjedal 2.0
 * HTML2 is a bit old so lets
     * Get HTML5/CSS3
     * Something that doesn't look like a toilet
-    * Something usefull
+    * Something useful
 * Learn Django
 * Mess around and try new stuff
 
@@ -15,11 +15,22 @@ Skotsjedal 2.0
 ### Features
 * Login
 * Homepage, duh
-* Blogg
+* Blog
+    * Posts support markdown
+
+## Todo
+* User can edit blogposts
+* User can create comments
 
 ### Planned Features
 * Info pages
-* Markdown in blogposts?
 * I really don't know
 
 > Common sense is not so common
+
+
+### Dependencies
+* Python 2.7.x
+* Django 1.5, `pip install django`
+* South, `pip install south`
+* Markdown2, `pip install markdown2`
