@@ -17,20 +17,20 @@ Skotsjedal 2.0
 * Homepage, duh
 * Blog
     * Posts support markdown
+    * User can create comments
 
 ## Todo
 * User can edit blogposts
-* User can create comments
 
 ### Planned Features
 * Info pages
 * I really don't know
-
-> Common sense is not so common
-
 
 ### Dependencies
 * Python 2.7.x
 * Django 1.5, `pip install django`
 * South, `pip install south`
 * Markdown2, `pip install markdown2`
+    * pygments, `pip install pygments` for highlighting of code in markdown
+
+> Common sense is not so common

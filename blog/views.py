@@ -34,7 +34,6 @@ class CreateView(generic.CreateView):
 class CreateCommentView(generic.CreateView):
     model = Comment
     form_class = NewComment
-    #template_name = 'blog/create.html'
 
     def form_valid(self, form):
         form.instance.author = self.request.user
