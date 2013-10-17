@@ -8,8 +8,10 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
                        url(r'^$', home.IndexView.as_view(), name='index'),
+
                        url(r'^blog/$', blog.IndexView.as_view(), name='blog'),
-                       url(r'^blog/new$', blog.CreateView.as_view(), name='createblog'),
+                       url(r'^blog/new$', blog.CreateView.as_view(), name='create-blog'),
+                       url(r'^blog/newcomment$', blog.CreateCommentView.as_view(), name='create-comment'),
 
                        url(r'^user/$', user.IndexView.as_view(), name='users'),
                        url(r'^login/$', 'django.contrib.auth.views.login', name='login'),

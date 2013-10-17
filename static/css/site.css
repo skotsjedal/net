@@ -29,7 +29,12 @@ html, body {
 }
 
 .comments {
+    position: relative;
     margin-top: 30px;
+}
+
+.comments.in {
+    min-height: 200px;
 }
 
 .panel {
@@ -48,7 +53,23 @@ html, body {
 .page-header h1 {
     margin:0;
 }
+
 .post {
     margin-top: 30px;
-    /*padding-bottom: 15px;*/
+}
+
+.create-comment {
+    position: absolute;
+    left: 30px;
+    top: 0;
+    color: lightslategray;
+}
+
+.create-comment span {
+    font-weight: bold;
+    font-size: 1.6em;
+}
+
+.create-comment form {
+    margin-top: 10px;
 }

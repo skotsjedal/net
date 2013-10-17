@@ -1,7 +1,7 @@
 from django.views import generic
 from blog.models import *
 from django.core.urlresolvers import reverse
-from blog.form import NewBlog
+from blog.form import NewBlog, NewComment
 
 
 class IndexView(generic.ListView):
@@ -26,6 +26,19 @@ class CreateView(generic.CreateView):
     def form_valid(self, form):
         form.instance.author = self.request.user
         return super(CreateView, self).form_valid(form)
+
+    def get_success_url(self):
+        return reverse('blog')
+
+
+class CreateCommentView(generic.CreateView):
+    model = Comment
+    form_class = NewComment
+    #template_name = 'blog/create.html'
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super(CreateCommentView, self).form_valid(form)
 
     def get_success_url(self):
         return reverse('blog')

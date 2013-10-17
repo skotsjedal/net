@@ -10,45 +10,63 @@
 
     <h1>Blog</h1>
     {% if user.is_authenticated and user.is_admin %}
-        <a href="{% url 'createblog' %}">Create new entry</a>
+        <a href="{% url 'create-blog' %}">Create new entry</a>
     {% endif %}
 
     {% for post in posts %}
         <div id="{{ post.id }}" class="row">
-        <div class="col-md-offset-1 col-md-9 panel panel-default post">
-            <div class="page-header">
-                <h1>{{ post.title }}</h1>
-            </div>
-            <div class="panel-body">{{ post.content|markdown }}</div>
-            <div class="panel-footer">
-                <span class="badge badge-success"><i class="icon-calendar"></i> {{ post.time }}</span>
-                <span class="label label-info"><i class="icon-user"></i> {{ post.author.username }}</span>
-                <div class="pull-right">
-                    <button class="btn btn-primary"
-                            data-toggle="collapse" title="Show Comments"
-                            data-target="#comment{{ post.id }}">
-                        <i class="icon-comment"></i> {{ post.comment_set.all|length }} <i
-                            class="icon-angle-down icon-large"></i>
-                    </button>
+            <div class="col-md-offset-1 col-md-9 panel panel-default post">
+                <div class="page-header">
+                    <h1>{{ post.title }}</h1>
                 </div>
-            </div>
-            <div id="comment{{ post.id }}" class="collapse comments">
-                {% for comment in post.comment_set.all %}
-                    <div class="row">
-                        <div class="col-md-offset-6 cold-md-4">
-                            <blockquote>
-                               {{ comment.content }}
-                                <small>
-                                    <i class="icon-user"></i> {{ comment.author }} &nbsp;
-                                    <i class="icon-minus icon-large"></i> &nbsp; {{ comment.time }}
-                                </small>
-                            </blockquote>
-                        </div>
-                    </div>
-                {% endfor %}
-            </div>
+                <div class="panel-body">{{ post.content|markdown }}</div>
+                <div class="panel-footer">
+                    <span class="badge badge-success"><i class="icon-calendar"></i> {{ post.time }}</span>
+                    <span class="label label-info"><i class="icon-user"></i> {{ post.author.username }}</span>
 
-        </div>
+                    <div class="pull-right">
+                        <button class="btn btn-primary"
+                                data-toggle="collapse" title="Show Comments"
+                                data-target="#comment{{ post.id }}">
+                            <i class="icon-comment"></i> {{ post.comment_set.all|length }} <i
+                                class="icon-angle-down icon-large"></i>
+                        </button>
+                    </div>
+                </div>
+                <div id="comment{{ post.id }}" class="collapse comments">
+
+                    {% if user.is_authenticated %}
+                        <div id="new-comment{{ post.id }}" class="create-comment">
+                            <span>Submit new comment</span>
+
+                            <form action="{% url 'create-comment' %}" method="post">
+                                {% csrf_token %}
+                                <input type="hidden" name="post" value="{{ post.id }}">
+
+                                <div class="form-group">
+                                    <textarea rows="5" cols="30" name="content" class="form-control"></textarea>
+                                </div>
+                                <button class="btn btn-default" type="submit"><i class="icon-pencil"></i> Save</button>
+                            </form>
+                        </div>
+                    {% endif %}
+
+                    {% for comment in post.comment_set.all %}
+                        <div class="row">
+                            <div class="col-md-offset-6 cold-md-4">
+                                <blockquote>
+                                    {{ comment.content }}
+                                    <small>
+                                        <i class="icon-user"></i> {{ comment.author }} &nbsp;
+                                        <i class="icon-minus icon-large"></i> &nbsp; {{ comment.time }}
+                                    </small>
+                                </blockquote>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+
+            </div>
         </div>
     {% endfor %}
 
