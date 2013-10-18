@@ -33,10 +33,4 @@ Skotsjedal 2.0
 * Markdown2, `pip install markdown2`
     * pygments, `pip install pygments` for highlighting of code in markdown
 
-
-Jass ville se dette her:
-```c
-int *c = &b;
-```
-
 > Common sense is not so common
