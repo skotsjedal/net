@@ -13,6 +13,9 @@ $(document).ready(function () {
             url: url,
             data: { csrfmiddlewaretoken: token},
             success: function () {
+                // We are unable to do anything about the autoredirect
+                // performed by the browser before we receive it here
+                // so there will be a "wasted" GET call
                 window.location = redirect;
             }
         });

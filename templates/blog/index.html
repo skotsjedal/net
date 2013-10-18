@@ -19,7 +19,7 @@
                 <div class="page-header">
                     <h1>{{ post.title }}
                         {% if user.is_authenticated and user.is_admin %}
-                            <small><a href="{% url 'edit-post' pk=post.id %}">Edit</a></small>
+                            <small class="pull-right"><a href="{% url 'edit-post' pk=post.id %}">Edit</a></small>
                         {% endif %}
                     </h1>
                 </div>
