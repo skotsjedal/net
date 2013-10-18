@@ -1,7 +1,7 @@
 from django.views import generic
 from blog.models import *
-from django.core.urlresolvers import reverse
-from blog.form import NewBlog, NewComment
+from django.core.urlresolvers import reverse, reverse_lazy
+from blog.form import NewBlog, NewComment, UpdateBlog
 
 
 class IndexView(generic.ListView):
@@ -29,6 +29,20 @@ class CreateView(generic.CreateView):
 
     def get_success_url(self):
         return reverse('blog')
+
+
+class EditView(generic.UpdateView):
+    model = Post
+    form_class = UpdateBlog
+    template_name = 'blog/create.html'
+
+    def get_success_url(self):
+        return reverse('blog')
+
+
+class DeleteView(generic.DeleteView):
+    model = Post
+    success_url = reverse_lazy('blog')
 
 
 class CreateCommentView(generic.CreateView):

@@ -1,5 +1,6 @@
 from django.db import models
 from django.conf import settings
+from django.core.urlresolvers import reverse
 
 
 class Comment(models.Model):
@@ -21,8 +22,10 @@ class Post(models.Model):
     title = models.CharField(max_length=30)
     content = models.TextField()
     time = models.DateTimeField(auto_now_add=True)
-    #comments = models.ManyToManyField(Comment, blank=True)
     author = models.ForeignKey(settings.AUTH_USER_MODEL)
+
+    def get_absolute_url(self):
+        return reverse('blog', kwargs={'pk': self.pk})
 
     def __unicode__(self):
         return self.title + "@" + str(self.time)

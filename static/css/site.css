@@ -73,3 +73,11 @@ html, body {
 .create-comment form {
     margin-top: 10px;
 }
+
+#deleteRow {
+    /*padding:0;*/
+}
+
+#deleteForm {
+    float: right;
+}
