@@ -20,7 +20,7 @@ Skotsjedal 2.0
     * User can create comments
 
 ## Todo
-* User can edit blogposts
+
 
 ### Planned Features
 * Info pages
@@ -32,5 +32,11 @@ Skotsjedal 2.0
 * South, `pip install south`
 * Markdown2, `pip install markdown2`
     * pygments, `pip install pygments` for highlighting of code in markdown
+
+
+Jass ville se dette her:
+```c
+int *c = &b;
+```
 
 > Common sense is not so common
