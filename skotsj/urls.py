@@ -10,7 +10,7 @@ urlpatterns = patterns('',
                        url(r'^$', home.IndexView.as_view(), name='index'),
 
                        url(r'^blog/$', blog.IndexView.as_view(), name='blog'),
-                       url(r'^blog/(?P<pk>\d+)/$', blog.DetailView.as_view(), name='blog'),
+                       url(r'^blog/(?P<pk>\d+)/$', blog.DetailView.as_view(), name='view-blog'),
                        url(r'^blog/new$', blog.CreateView.as_view(), name='create-post'),
                        url(r'^blog/edit/(?P<pk>\d+)/$', blog.EditView.as_view(), name='edit-post'),
                        url(r'^blog/delete/(?P<pk>\d+)/$', blog.DeleteView.as_view(), name='delete-post'),

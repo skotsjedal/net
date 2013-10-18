@@ -58,6 +58,10 @@ html, body {
     margin-top: 30px;
 }
 
+.postbody {
+    margin: 60px 0;
+}
+
 .create-comment {
     position: absolute;
     left: 30px;
@@ -65,17 +69,13 @@ html, body {
     color: lightslategray;
 }
 
-.create-comment span {
+span.comment {
     font-weight: bold;
     font-size: 1.6em;
 }
 
-.create-comment form {
+form.comment {
     margin-top: 10px;
-}
-
-#deleteRow {
-    /*padding:0;*/
 }
 
 #deleteForm {

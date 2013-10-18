@@ -15,7 +15,7 @@ class IndexView(generic.ListView):
 
 class DetailView(generic.DetailView):
     model = Post
-    template_name = 'blog/post.html'
+    template_name = 'blog/view.html'
 
 
 class CreateView(generic.CreateView):

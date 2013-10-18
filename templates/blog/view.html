@@ -1,0 +1,70 @@
+{% extends '_layout.html' %}
+{% load markdown %}
+
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}/css/pygments.css">
+{% endblock %}
+
+{% block body %}
+    <div clasS="row">
+        <div class="col-md-offset-1 col-md-9 post">
+            <div>
+                <h1><a href="{% url 'view-blog' pk=post.id %}">{{ post.title }}
+                    {% if user.is_authenticated and user.is_admin %}
+                        <small class="pull-right"><a href="{% url 'edit-post' pk=post.id %}">Edit</a></small>
+                    {% endif %}
+                </a></h1>
+
+                <span class="badge badge-success"><i class="icon-calendar"></i> {{ post.time }}</span>
+                <span class="label label-info"><i class="icon-user"></i> {{ post.author.username }}</span>
+            </div>
+
+            <div class="postbody">
+                {{ post.content|markdown }}
+            </div>
+
+            <div class="pull-right">
+                <span class="label label-info"><i class="icon-comment"></i> {{ post.comment_set.all|length }}</span>
+            </div>
+
+        </div>
+    </div>
+    {% for comment in post.comment_set.all %}
+        <div class="row">
+            <div class="col-md-offset-2 cold-md-8">
+                <blockquote>
+                    {{ comment.content }}
+                    <small>
+                        <i class="icon-user"></i> {{ comment.author }} &nbsp;
+                        <i class="icon-minus icon-large"></i> &nbsp; {{ comment.time }}
+                    </small>
+                </blockquote>
+            </div>
+        </div>
+    {% endfor %}
+
+    {% if user.is_authenticated %}
+        <div class="row">
+            <div id="new-comment{{ post.id }}" class="col-md-offset-1 col-md-6 comments">
+                <span class="comment">Submit new comment</span>
+
+                <form action="{% url 'create-comment' %}" method="post" class="comment">
+                    {% csrf_token %}
+                    <input type="hidden" name="post" value="{{ post.id }}">
+
+                    <div class="form-group">
+                        <textarea rows="5" name="content" class="form-control"></textarea>
+                    </div>
+                    <button class="btn btn-default" type="submit"><i class="icon-pencil"></i> Save</button>
+                </form>
+            </div>
+        </div>
+    {% endif %}
+
+    <div class="row">
+        <div class="col-md-offset-1 col-md-10">
+            <a href="{% url "blog" %}">Back to blog</a>
+        </div>
+    </div>
+
+{% endblock %}

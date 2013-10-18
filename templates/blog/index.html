@@ -17,11 +17,11 @@
         <div id="{{ post.id }}" class="row">
             <div class="col-md-offset-1 col-md-9 panel panel-default post">
                 <div class="page-header">
-                    <h1>{{ post.title }}
+                    <h1><a href="{% url 'view-blog' pk=post.id %}">{{ post.title }}
                         {% if user.is_authenticated and user.is_admin %}
                             <small class="pull-right"><a href="{% url 'edit-post' pk=post.id %}">Edit</a></small>
                         {% endif %}
-                    </h1>
+                    </a></h1>
                 </div>
                 <div class="panel-body">{{ post.content|markdown }}</div>
                 <div class="panel-footer">
@@ -41,10 +41,10 @@
 
                     {% if user.is_authenticated %}
                         <div id="new-comment{{ post.id }}" class="create-comment">
-                            <span>Submit new comment</span>
+                            <span class="comment">Submit new comment</span>
 
-                            <form action="{% url 'create-comment' %}" method="post">
-                                {% csrf_token %}
+                            <form action="{% url 'create-comment' %}" method="post" class="comment">
+                            {% csrf_token %}
                                 <input type="hidden" name="post" value="{{ post.id }}">
 
                                 <div class="form-group">
