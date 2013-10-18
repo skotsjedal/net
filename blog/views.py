@@ -27,17 +27,11 @@ class CreateView(generic.CreateView):
         form.instance.author = self.request.user
         return super(CreateView, self).form_valid(form)
 
-    def get_success_url(self):
-        return reverse('blog')
-
 
 class EditView(generic.UpdateView):
     model = Post
     form_class = UpdateBlog
     template_name = 'blog/create.html'
-
-    def get_success_url(self):
-        return reverse('blog')
 
 
 class DeleteView(generic.DeleteView):

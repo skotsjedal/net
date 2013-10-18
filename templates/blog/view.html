@@ -9,11 +9,11 @@
     <div clasS="row">
         <div class="col-md-offset-1 col-md-9 post">
             <div>
-                <h1><a href="{% url 'view-blog' pk=post.id %}">{{ post.title }}
+                <h1>{{ post.title }}
                     {% if user.is_authenticated and user.is_admin %}
                         <small class="pull-right"><a href="{% url 'edit-post' pk=post.id %}">Edit</a></small>
                     {% endif %}
-                </a></h1>
+                </h1>
 
                 <span class="badge badge-success"><i class="icon-calendar"></i> {{ post.time }}</span>
                 <span class="label label-info"><i class="icon-user"></i> {{ post.author.username }}</span>
