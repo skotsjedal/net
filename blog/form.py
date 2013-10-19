@@ -6,7 +6,7 @@ from django.core.urlresolvers import reverse
 class NewBlog(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ['title', 'content']
+        fields = ['title', 'content', 'public']
 
 
 class UpdateBlog(forms.ModelForm):

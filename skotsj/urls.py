@@ -1,4 +1,4 @@
-from django.conf.urls import patterns, include, url
+from django.conf.urls import patterns, include, url, handler404, handler500, handler403
 from home import views as home
 from blog import views as blog
 from user import views as user
@@ -17,15 +17,17 @@ urlpatterns = patterns('',
                        url(r'^blog/newcomment$', blog.CreateCommentView.as_view(), name='create-comment'),
 
                        url(r'^user/$', user.IndexView.as_view(), name='users'),
+                       url(r'^user/(?P<pk>\d+)/$', user.DetailView.as_view(), name='userdetail'),
                        url(r'^login/$', 'django.contrib.auth.views.login', name='login'),
                        url(r'^logout/$', 'django.contrib.auth.views.logout', {'next_page': '/'}, name='logout'),
-                       url(r'^user/(?P<pk>\d+)/$', user.DetailView.as_view(), name='userdetail'),
 
-                       # url(r'^skotsj/', include('skotsj.foo.urls')),
+                       url(r'^error/$', home.error, name='error'),
+                       url(r'^error/404$', home.not_found_error, name='404-error'),
+                       url(r'^error/perm$', home.perm_error, name='permission-error'),
 
-                       # Uncomment the admin/doc line below to enable admin documentation:
-                       url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
-
-                       # Uncomment the next line to enable the admin:
                        url(r'^admin/', include(admin.site.urls)),
 )
+
+handler500 = 'home.views.error'
+handler403 = 'home.views.error'
+handler404 = 'home.views.not_found_error'

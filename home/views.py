@@ -1,13 +1,20 @@
-__author__ = 'skotsj'
 from django.http import HttpResponse
 from django.views.generic.base import TemplateView
+from django.shortcuts import render_to_response
+from skotsj.settings import STATIC_URL
 
 
 class IndexView(TemplateView):
     template_name = 'home/index.html'
-    #context_object_name = 'Index'
 
-    def get(self, request, *args, **kwargs):
-        context = 1
-        return self.render_to_response(context)
 
+def error(request):
+    return render_to_response('home/error/default.html', {'STATIC_URL': STATIC_URL})
+
+
+def not_found_error(request):
+    return render_to_response('home/error/404.html',  {'STATIC_URL': STATIC_URL})
+
+
+def perm_error(request):
+    return render_to_response('home/error/perm_error.html',  {'STATIC_URL': STATIC_URL})
