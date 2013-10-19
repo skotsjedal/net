@@ -47,5 +47,5 @@ class CreateCommentView(generic.CreateView):
         form.instance.author = self.request.user
         return super(CreateCommentView, self).form_valid(form)
 
-    def get_success_url(self):
-        return reverse('blog')
+    #def get_success_url(self):
+    #    return reverse('blog')

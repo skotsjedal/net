@@ -17,6 +17,9 @@ class Comment(models.Model):
     def __unicode__(self):
         return self.author.username + "@" + str(self.time)
 
+    def get_absolute_url(self):
+        return reverse('blog', kwargs={'pk': self.post.pk})
+
 
 class Post(models.Model):
     title = models.CharField(max_length=30)
