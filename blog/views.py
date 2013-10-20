@@ -70,6 +70,6 @@ class CreateCommentView(generic.CreateView):
         return super(CreateCommentView, self).form_valid(form)
 
     def dispatch(self, request, *args, **kwargs):
-        if request.user.is_authenticated:
+        if not request.user.is_authenticated:
             return HttpResponseRedirect(reverse('permission-error'))
         return super(CreateCommentView, self).dispatch(request, *args, **kwargs)
