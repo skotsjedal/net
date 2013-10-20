@@ -1,0 +1,8 @@
+.*
+!.gitignore
+*.sqlite
+*.pyc
+*.pyo
+privatesettings.py
+*.log
+*.pot
