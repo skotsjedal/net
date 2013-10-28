@@ -15,8 +15,8 @@
                     {% endif %}
                 </h1>
 
-                <span class="badge badge-success"><i class="icon-calendar"></i> {{ post.time }}</span>
-                <span class="label label-info"><i class="icon-user"></i> {{ post.author.username }}</span>
+                <span class="badge badge-success"><i class="fa fa-calendar"></i> {{ post.time }}</span>
+                <span class="label label-info"><i class="fa fa-user"></i> {{ post.author.username }}</span>
             </div>
 
             <div class="postbody">
@@ -24,7 +24,7 @@
             </div>
 
             <div class="pull-right">
-                <span class="label label-info"><i class="icon-comment"></i> {{ post.comment_set.all|length }}</span>
+                <span class="label label-info"><i class="fa fa-comment"></i> {{ post.comment_set.all|length }}</span>
             </div>
 
         </div>
@@ -35,8 +35,8 @@
                 <blockquote>
                     {{ comment.content }}
                     <small>
-                        <i class="icon-user"></i> {{ comment.author }} &nbsp;
-                        <i class="icon-minus icon-large"></i> &nbsp; {{ comment.time }}
+                        <i class="fa fa-user"></i> {{ comment.author }} &nbsp;
+                        <i class="fa fa-minus fa-large"></i> &nbsp; {{ comment.time }}
                     </small>
                 </blockquote>
             </div>
@@ -55,7 +55,7 @@
                     <div class="form-group">
                         <textarea rows="5" name="content" class="form-control"></textarea>
                     </div>
-                    <button class="btn btn-default" type="submit"><i class="icon-pencil"></i> Save</button>
+                    <button class="btn btn-default" type="submit"><i class="fa fa-pencil"></i> Save</button>
                 </form>
             </div>
         </div>
