@@ -1,13 +1,29 @@
 {% extends '_layout.html' %}
 
 {% block body %}
+    <h1>Users</h1>
+
+
+    <div class="col-md-8">
 {% if users %}
-    <ul>
+    <table  class="table table-striped">
+    <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Access</th>
+        <th>Status</th>
+    </tr>
     {% for user in users %}
-        <li><a href="{% url 'userdetail' user.id %}">{{ user.username }}</a></li>
+        <tr class="{{ user.is_active|yesno:",danger" }}">
+        <td>{{ user.id }}</td>
+        <td><a href="{% url 'userdetail' user.id %}">{{ user.username }}</a></td>
+        <td>{{ user.is_admin|yesno:"Admin,User" }}</td>
+        <td>{{ user.is_active|yesno:"Active,Deactivated" }}</td>
+        </tr>
     {% endfor %}
-    </ul>
+    </table>
 {% else %}
     <p>No users are available.</p>
 {% endif %}
+    </div>
 {% endblock %}

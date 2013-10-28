@@ -1,8 +1,25 @@
 {% extends '_layout.html' %}
+{% block title %}
+    Userinfo - {{ userprofile.username }}
+{% endblock %}
 
 {% block body %}
-    {{ userprofile.id }}
-    {{ userprofile.username }}
-    {{ userprofile.email }}
+    <h1><i class="fa fa-info-circle"></i> Info for user <strong>{{ userprofile.username }}</strong></h1>
 
+    <dl class="dl-horizontal">
+        <dt>User <i class="fa fa-reorder"></i></dt>
+        <dd>{{ userprofile.id }}</dd>
+
+        <dt>Email <i class="fa fa-envelope-o"></i></dt>
+        <dd>{{ userprofile.email }}</dd>
+
+        <dt>Birthday <i class="fa fa-calendar-o"></i></dt>
+        <dd>{{ userprofile.date_of_birth }}</dd>
+
+        <dt>Access <i class="fa fa-shield"></i></dt>
+        <dd>{{ userprofile.is_admin|yesno:"Admin,User" }}</dd>
+
+        <dt>Status <i class="fa fa-lock"></i></dt>
+        <dd>{{ userprofile.is_active|yesno:"Active,Disabled" }}</dd>
+    </dl>
 {% endblock %}
